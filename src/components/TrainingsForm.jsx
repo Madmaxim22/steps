@@ -1,15 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function TrainingsForm({ editTraining, onSubmitTraining }) {
-    const [date, setDate] = useState('');
-    const [distance, setDistance] = useState('');
-
-    useEffect(() => {
-        if (editTraining) {
-            setDate(editTraining.date);
-            setDistance(editTraining.distance);
-        }
-    }, [editTraining]);
+    const [date, setDate] = useState(editTraining?.date ?? '');
+    const [distance, setDistance] = useState(editTraining?.distance ?? '');
 
     function handleSubmit(e) {
         e.preventDefault();

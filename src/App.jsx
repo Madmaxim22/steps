@@ -52,6 +52,7 @@ function App() {
   return (
     <div className="container">
       <TrainingsForm
+        key={editingTraining?.originalDate ?? 'new'}
         editTraining={editingTraining}
         onSubmitTraining={handleSubmitTraining}
       />
