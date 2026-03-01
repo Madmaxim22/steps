@@ -1,6 +1,6 @@
 import TrainingItem from "./TrainingItem";
 
-function TrainingsTable({ trainings, onDeleteTraining }) {
+function TrainingsTable({ trainings, onDeleteTraining, onEditTraining }) {
     return (
         <div className="data-table">
             <div className="table-header">
@@ -16,6 +16,7 @@ function TrainingsTable({ trainings, onDeleteTraining }) {
                             key={training.date} 
                             training={training} 
                             onDelete={onDeleteTraining}
+                            onEdit={onEditTraining}
                         />
                     ))
                 }

@@ -25,24 +25,40 @@ function mergeOrAddTraining(trainings, newTraining) {
 
 function App() {
   const [trainings, setTrainings] = useState([]);
+  const [editingTraining, setEditingTraining] = useState(null);
 
-  function handleAddTraining(newTraining) {
-    setTrainings(prev => sortByDate(mergeOrAddTraining(prev, newTraining)));
+  function handleSubmitTraining(newTraining, originalDate = null) {
+    setTrainings(prev => {
+      const next = originalDate
+        ? prev.filter(t => t.date !== originalDate)
+        : prev;
+      return sortByDate(mergeOrAddTraining(next, newTraining));
+    });
+    if (originalDate) setEditingTraining(null);
   }
 
-  
   function handleDeleteTraining(date) {
     setTrainings(prev => prev.filter(t => t.date !== date));
   }
 
-  console.log(trainings);
+  function handleEditTraining(training) {
+    setEditingTraining({
+      originalDate: training.date,
+      date: training.date,
+      distance: training.distance,
+    });
+  }
 
   return (
     <div className="container">
-      <TrainingsForm onAddTraining={handleAddTraining} />
+      <TrainingsForm
+        editTraining={editingTraining}
+        onSubmitTraining={handleSubmitTraining}
+      />
       <TrainigsTable 
         trainings={trainings}
         onDeleteTraining={handleDeleteTraining} 
+        onEditTraining={handleEditTraining}
       />
     </div>
   )
