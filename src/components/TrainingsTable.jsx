@@ -1,6 +1,6 @@
 import TrainingItem from "./TrainingItem";
 
-function TrainingsTable({ trainings }) {
+function TrainingsTable({ trainings, onDeleteTraining }) {
     return (
         <div className="data-table">
             <div className="table-header">
@@ -12,7 +12,11 @@ function TrainingsTable({ trainings }) {
                 {trainings.length === 0 ? 
                     <div className="empty-state">Нет данных о тренировках</div> :
                     trainings.map((training) => (
-                        <TrainingItem key={training.date} training={training} />
+                        <TrainingItem 
+                            key={training.date} 
+                            training={training} 
+                            onDelete={onDeleteTraining}
+                        />
                     ))
                 }
             </div>

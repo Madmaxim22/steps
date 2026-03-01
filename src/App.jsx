@@ -30,12 +30,20 @@ function App() {
     setTrainings(prev => sortByDate(mergeOrAddTraining(prev, newTraining)));
   }
 
+  
+  function handleDeleteTraining(date) {
+    setTrainings(prev => prev.filter(t => t.date !== date));
+  }
+
   console.log(trainings);
 
   return (
     <div className="container">
       <TrainingsForm onAddTraining={handleAddTraining} />
-      <TrainigsTable trainings={trainings} />
+      <TrainigsTable 
+        trainings={trainings}
+        onDeleteTraining={handleDeleteTraining} 
+      />
     </div>
   )
 }
