@@ -4,7 +4,7 @@ function TrainingsTable({ trainings, onDeleteTraining, onEditTraining }) {
     return (
         <div className="data-table">
             <div className="table-header">
-                <div className="col-date">Дата (ДД.ММ.ГГ)</div>
+                <div className="col-date">Дата (ДД.ММ.ГГГГ)</div>
                 <div className="col-distance">Пройдено км</div>
                 <div className="col-actions">Действия</div>
             </div>
